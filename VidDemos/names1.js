@@ -1,18 +1,30 @@
-// Code to output a random full name to the console.
+// node Homework/names1.js
+// To use this program simply enter the terminal, write: node names.js <your file name> <your number> and press enter.
+
 let firstNames = GetFirstNames();
 let lastNames = GetLastNames();
 
+const args = process.argv.slice(2);
 
-function randomNumber(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+// console.log(args[0]);
+
+const fs = require('fs')
+
+fs.writeFile(`${args[0]}`, numberOfNames(), function(err) {
+    if (err) throw err;
+    console.log('Saved!');
+});
+
+function numberOfNames() {
+    for (let i = 0; i < args[1]; i++) {
+        fs.appendFile(`${args[0]}`, `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}, `, function(err){
+            if (err) throw err;
+            console.log('Saved!');
+        });
+    }
 }
-let randomNumberFN = randomNumber(0, 2736);
-let randomNumberLN = randomNumber(0, 1000);
 
-
-// Array of First names
+// Returns an array for First names
 function GetFirstNames() {
     return ['Aaran',
         'Aaren',
@@ -2753,7 +2765,6 @@ function GetFirstNames() {
     ];
 }
 
-// Array of Last names
 function GetLastNames() {
     return ['Abbott',
         'Acevedo',
@@ -3757,6 +3768,3 @@ function GetLastNames() {
         'Zimmerman'
     ];
 }
-
-
-console.log(`${firstNames[randomNumberFN]}, ${lastNames[randomNumberLN]}`);
