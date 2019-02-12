@@ -1,4 +1,5 @@
 // Code to give 10 random names to "Names.txt"
+// To use enter: node namesFile.js
 const fs = require('fs');
 let firstNames = GetFirstNames();
 let lastNames = GetLastNames();
@@ -6,19 +7,21 @@ let lastNames = GetLastNames();
 
 function tenRandomNames() {
     for (let i = 0; i < 9; i++) {
-        fs.appendFile('Homework/Names.txt', `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}, `, function (err) {
+        fs.appendFile('Names.txt', `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}, `, function (err) {
             if (err) throw err;
             console.log('Saved!');
         });
     }
 
-    fs.appendFile('Homework/Names.txt', `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`, function (err) {
+    fs.appendFile('Names.txt', `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`, function (err) {
         if (err) throw err;
         console.log('Saved!');
     });
 }
 
+
 tenRandomNames();
+
 
 // Array of First names
 function GetFirstNames() {

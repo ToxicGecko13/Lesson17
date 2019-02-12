@@ -1,4 +1,5 @@
 // Code to output a random full name to the console.
+// To use enter: node randomNames.js
 let firstNames = GetFirstNames();
 let lastNames = GetLastNames();
 
